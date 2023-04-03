@@ -1,0 +1,47 @@
+import urllib.request
+import json
+
+#set the endpoint url for aws lambada function 
+
+url= https://ij92qpvpma.execute-api.eu-west-1.amazonaws.com/candidate-email_serverless_lambda_stage/data
+
+
+
+# set the data payload to send to the lambada function
+
+data = {
+'param1' : 'value1',
+'param2' : 'value2'
+}
+
+#convert the data payload to json format
+
+data_json = json.dumps(data).encode('urf-8')
+
+#set the http headers
+
+header = {
+'content-Type' : 'application/json',
+'X-Siemens-Auth': 'test'
+}
+payload = {
+      "subnet_id": "<Your Private Subnet ID>",
+      "name": "<Your Full Name>",
+      "email": "<Your Email Address>"
+    }
+
+# create the http request object
+req = urllib.request.Request(url, data_json, headers)
+
+#send the http request form the lambada function
+
+responce = urllib.request.urlopen(req)
+
+#read the responce form lambada function
+
+responce_json = responce.read().decode('utf-8')
+
+
+#print the responce
+
+print(resopnce_json)
