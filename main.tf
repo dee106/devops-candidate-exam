@@ -47,7 +47,7 @@ vpc_id = "vpc-00bf0d10a6a41600c""
 
 route {
 cidr_block = "0.0.0.0/0"
-gateway_id = "${aws_internet_gateway.test-vpc-igw.id}"
+gateway_id = "${aws_internet_gateway.vpc-igw.id}"
 }
 
 }
@@ -64,6 +64,16 @@ resource "aws_route_table_association" "public-routing-2" {
 subnet_id = "${aws_subnet.subnet-2.id}"
 route_table_id = "${aws_route_table.public-rt.id}"
 }
+######### creating internet igw#######
+
+resource "aws_internet_gateway" "vpc-igw" {
+
+vpc_id = "${aws_vpc.vpc.id}"
+tags = {
+Name = "vpc-igw"
+}
+}
+
       
        
            
