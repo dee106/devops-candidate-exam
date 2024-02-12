@@ -1,0 +1,40 @@
+yum install java-1.8.0-openjdk-devel -y
+yum install git -y
+git --version
+java -version
+cd /mnt
+wget <maven download url>
+https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.zip
+unzip <maven download zip>
+cd apachec maven file
+cd /bin
+ls
+./mvn --version
+cd /root
+ls -ltra
+vi .bashrc
+export MAVEN_HOME=/mnt/apache-maven-3.8.6
+export M2_HOME=/mnt/apache-maven-3.8.6
+export M2=/mnt/apache-maven-3.8.6/bin
+export PATH=/mnt/apache-maven-3.8.6/bin:$PATH
+>exit command
+> again login
+> run mvn command
+> cd /mnt
+> git clone <git repo url>
+> mvn install
+> wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.70/bin/apache-tomcat-9.0.68.zip
+> unzip apache-tomcat-9.0.68.zip
+> cd apache-tomcat-9.0.68
+> cd bin
+> chmode 777 catalina.sh startup.sh shutdown.sh
+> ./startup.sh
+> cd webapp
+> pwd
+> then go to the git clone repo
+> cd target > cp .war file into the webapp directoy present in the apache-tomcat directory
+> go to the browser and take public IP:8080/WebApp
+> u can see your application to the user 
+
+
+/mnt/pradnyesh/workspace/maven-installation
