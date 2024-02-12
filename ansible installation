@@ -2,7 +2,7 @@ How to configure Ansible and SSH connection between nodes ?
 > Launch 3 EC2 instances and make one server for ansible server and another 2 are node server
 > yum update -y
 > then install epel package
-yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm --skip-broken
 > yum update -y
 > yum install ansible
 > ansible --version
