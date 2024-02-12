@@ -1,0 +1,50 @@
+How to configure Ansible and SSH connection between nodes ?
+> Launch 3 EC2 instances and make one server for ansible server and another 2 are node server
+> yum update -y
+> then install epel package
+yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+> yum update -y
+> yum install ansible
+> ansible --version
+> cd /etc/ansible
+> ls > hosts file ---this is inventory file updation
+>vi hosts
+- [qalinux]
+put both private IP's of nodes
+** you need enable default configuration**
+> vi ansible.cfg
+ uncomment inventory path and sudo_user
+and save
+> we create ansible user on ansible server and 2 nodes by using useradd and passwd
+> have to give sudoers permissions
+go to /etc/sudoers
+vi sudoers
+ansible ALL=[ALL] NOPASSWD: ALL
+do above steps in all servers and login through root user
+**SSH configuration
+go into root login then 
+cd /etc/ssh
+vi sshd_config
+uncommit permitrootlogin
+uncommit PasswordAuthentication yes
+commit PasswordAuthentication no
+then service sshd restart
+do this for all servers
+now you can jump on to the node
+> ssh 172.31.92.215
+> ssh 172.31.89.29
+but it will ask password
+----------------------------------------
+ssh trusted relation
+go to the ansible server
+login with ansible user
+give command ssh-keygen
+cd .ssh/
+ls
+> ssh-copy-id ansible@172.31.92.215
+> ssh-copy-id ansible@172.31.89.29
+> ssh 172.31.92.215
+> ssh 172.31.89.29
+when you jump to node server it will not ask you abt password
+
+
